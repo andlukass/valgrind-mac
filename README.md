@@ -17,7 +17,7 @@ to make it easier to run, we can add an alias, so we just need to type valgrind 
 echo "alias valgrind='docker run --rm -v $PWD:/temp valgrind'" >> ~/.zshrc
 source ~/.zshrc
 
-# USAGE
+## USAGE
 if you want just to compile files, run "valgrind f1 f2 f3 ..."
 if you want to compile entire projects with a Makefile, run "valgrind make"
 now re have our executable, just run "valgrind ./<path_to_executable>"
