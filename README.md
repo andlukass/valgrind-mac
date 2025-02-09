@@ -10,12 +10,13 @@ in the Dockerfile directory, run:
 ### Adding an Alias for Convenience
 After the image has been built, to make it easier to run, you can add an alias so you just need to type valgrind to run the container. Run:
 
-    echo "alias valgrind='docker run --rm -v $PWD:/temp valgrind'" >> ~/.zshrc
+    echo -e 'unalias valgrind 2>/dev/null\nvalgrind() {\n    docker run --rm -v  "$PWD:/temp" valgrind "$@"\n}' >> ~/.zshrc
     source ~/.zshrc
+
 The '-v' flag shares your current directory with the container, and with the '--rm' flag, the container deletes itself right after execution.
 
 ## USAGE
-You need to ensure that your executable is compiled for Linux. Go to the project directory you want to run valgrind. You can compile your files using make:
+First, you need to ensure that your executable is compiled for Linux. Go to the project directory you want to run valgrind and compile your files using make:
 
     valgrind make
 
